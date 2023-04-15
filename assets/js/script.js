@@ -1,5 +1,12 @@
-let obtenerInfoComida = () => {
-    fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=Brie%20wrapped%20in%20prosciutto%20&%20brioche")
+const consultarComida = () => {
+
+    // extraer el nombre proporcionado
+    let nombreParaConsultar = document.getElementById('nombreProporcionado').value;
+    
+    // configuramos el endpoint a consultar concatenando el endpoint original con el nombre proporcionado
+    let endpoint = 'https://www.themealdb.com/api/json/v1/1/search.php?s='+nombreParaConsultar;
+
+    fetch(endpoint)
     .then(response => response.json())
     .then(datos =>{
         let infoTituloComida = datos.meals[0].strMeal;
